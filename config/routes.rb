@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  resources :players
+  resources :players, defaults: { format: "json" }
 end
