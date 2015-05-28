@@ -5,6 +5,10 @@ class PlayersController < ApplicationController
     respond_with Player.all
   end
 
+  def show
+    respond_with Player.find_by_name(params[:name])
+  end
+
   def create
     player = Player.find_by_name(params[:name])
 
