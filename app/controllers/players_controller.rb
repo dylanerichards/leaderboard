@@ -6,7 +6,11 @@ class PlayersController < ApplicationController
   end
 
   def show
-    respond_with Player.find_by_name(params[:name])
+    if Player.find_by_name(params[:name])
+      respond_with Player.find_by_name(params[:name])
+    else
+      raise ActionController::RoutingError.new('Not Found')
+    end
   end
 
   def create
