@@ -16,5 +16,15 @@ describe Player do
 
       expect(player4.rank).to eq 1
     end
+
+    it "shares rank with players of the same score" do
+      player1 = Player.create(name: "Dylan", score: 2)
+      player2 = Player.create(name: "Simon", score: 3)
+      player3 = Player.create(name: "Uduma", score: 3)
+      player4 = Player.create(name: "Smith", score: 5)
+
+      expect(player3.rank).to eq 2
+      expect(player2.rank).to eq 2
+    end
   end
 end
