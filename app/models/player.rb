@@ -3,10 +3,6 @@ class Player < ActiveRecord::Base
 
   default_scope { order("score desc") }
 
-  def self.leaderboard
-    all.group_by(&:score)
-  end
-
   def rank
     scores = Player.all.map(&:score).uniq
     scores.index(self.score) + 1
