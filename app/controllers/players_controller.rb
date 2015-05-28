@@ -6,7 +6,15 @@ class PlayersController < ApplicationController
   end
 
   def create
-    respond_with Player.create(player_params)
+    player = Player.find_by_name(params[:name])
+
+    if player
+      player.update_attributes(score: params[:score])
+    else
+      player = Player.create(player_params)
+    end
+
+    respond_with player
   end
 
   private
