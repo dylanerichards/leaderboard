@@ -2,7 +2,7 @@ class PlayersController < ApplicationController
   respond_to :json
 
   def index
-    respond_with Player.all
+    respond_with Player.leaderboard
   end
 
   def create
