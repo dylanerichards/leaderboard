@@ -25,6 +25,15 @@ class PlayersController < ApplicationController
     respond_with player
   end
 
+  def destroy
+    player = Player.find_by_name(params[:name])
+     if player
+       player.destroy
+     else
+       raise ActionController::RoutingError.new('Not Found')
+     end
+  end
+
   private
 
   def player_params
