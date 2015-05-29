@@ -36,11 +36,12 @@ class PlayersController < ApplicationController
   def destroy
     player = Player.find_by_name(params[:name])
 
-     if player
-       player.destroy
-     else
-       raise ActionController::RoutingError.new('Not Found')
-     end
+    if player
+      player.destroy
+    else
+      raise ActionController::RoutingError.new('Not Found')
+      false
+    end
   end
 
   private
