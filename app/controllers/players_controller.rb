@@ -2,7 +2,15 @@ class PlayersController < ApplicationController
   respond_to :json
 
   def index
-    respond_with Player.all
+    if params[:offset] && params[:size]
+      respond_with Player.all.limit(params[:size].to_i).offset(params[:offset].to_i)
+    elsif params[:offset]
+      respond_with Player.all.offset(params[:offset].to_i)
+    elsif params[:size]
+      respond_with Player.all.limit(params[:size].to_i)
+    else
+      respond_with Player.all
+    end
   end
 
   def show
