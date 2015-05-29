@@ -27,6 +27,7 @@ class PlayersController < ApplicationController
 
   def destroy
     player = Player.find_by_name(params[:name])
+
      if player
        player.destroy
      else
