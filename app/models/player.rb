@@ -20,5 +20,4 @@ class Player < ActiveRecord::Base
       player.set_rank
     end
   end
-
 end
