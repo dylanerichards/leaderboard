@@ -9,7 +9,7 @@ class PlayersController < ApplicationController
     elsif params[:size]
       respond_with Player.all.limit(params[:size].to_i)
     else
-      respond_with Player.all
+      respond_with Player.all.limit(100)
     end
   end
 
