@@ -4,8 +4,10 @@ class PlayersController < ApplicationController
   def index
     if params[:offset] && params[:size]
       raise ActionController::RoutingError.new('Bad Request') if params[:size] > 100
+      raise ActionController::RoutingError.new('Offset Out of Range') if params[:offset].to_i >= Player.all.size
       respond_with Player.all.limit(params[:size].to_i).offset(params[:offset].to_i)
     elsif params[:offset]
+      raise ActionController::RoutingError.new('Offset Out of Range') if params[:offset].to_i >= Player.all.size
       respond_with Player.all.offset(params[:offset].to_i)
     elsif params[:size]
       raise ActionController::RoutingError.new('Bad Request') if params[:size] > 100
