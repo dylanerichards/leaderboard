@@ -1,28 +1,21 @@
-== README
+#Leaderboard
+## A RESTful API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Run instructions
 
-Things you may want to cover:
+  - Clone the repository and `cd` into it
+  - Run `rake db:migrate`
+  - Run `rails server`
+  - Visit `localhost:3000`
 
-* Ruby version
+### Consuming the API
 
-* System dependencies
+  Since the application has no front-end, you will need a tool to submit requests to the API. A nice one is [Postman](http://www.getpostman.com).
 
-* Configuration
+#### Available endpoints
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+  - `GET /players` -- Returns the top 100 players sorted by score
+  - `POST /` -- The request must be sent with with `name` and `score` parameters. If a player already exists for the provided name, that player is updated with the given score.
+  - `GET /:name` -- Returns the first player in the database for the given name.
+  - `GET /?offset=N&size=M` -- Returns up to `size` players, sorted by rank, starting at `offset`
+  - `DELETE /:name` -- Removes the named player from the database
